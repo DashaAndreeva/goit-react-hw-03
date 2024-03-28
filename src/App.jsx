@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ContactList from "./components/contactList/ContactList";
 import SearchBox from "./components/searchBox/SearchBox";
+import ContactForm from "./components/contactForm/ContactForm";
 import "./App.css";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <>
       <div className="container">
         <h1 className="title">Phonebook</h1>
-        {/* <ContactForm /> */}
+        <ContactForm />
         <SearchBox inputValue={inputValue} setInputValue={setInputValue} />
         <ContactList
           contacts={initialInfo}
