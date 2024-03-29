@@ -1,10 +1,14 @@
 import css from "./Contact.module.css";
 import { FaPhone, FaUser } from "react-icons/fa";
 
-export default function Contact({ name, number }) {
+export default function Contact({ id, name, number, deleteContact }) {
+  const handleDelete = () => {
+    deleteContact(id);
+  };
+
   return (
     <div className={css["container-contact"]}>
-      <div className={css["contact-info"]}>
+      <div key={id} className={css["contact-info"]}>
         <div>
           <FaUser /> {name}
         </div>
@@ -12,7 +16,9 @@ export default function Contact({ name, number }) {
           <FaPhone /> {number}
         </div>
       </div>
-      <button className={css["btn-delete"]}>Delete</button>
+      <button onClick={handleDelete} className={css["btn-delete"]}>
+        Delete
+      </button>
     </div>
   );
 }

@@ -4,9 +4,11 @@ import { ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 
-export default function ContactForm() {
+export default function ContactForm({ onSubmit }) {
   const nameId = useId();
   const telId = useId();
+
+  const initialValues = { name: "", tel: "" };
 
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
@@ -20,14 +22,14 @@ export default function ContactForm() {
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    onSubmit(values);
     actions.resetForm();
   };
 
   return (
     <div>
       <Formik
-        initialValues={{ name: "", tel: "" }}
+        initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={FeedbackSchema}
       >

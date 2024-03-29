@@ -1,17 +1,22 @@
 import css from "./ContactList.module.css";
 import Contact from "../contact/Contact";
 
-export default function ContactList({ contacts, filteredContacts }) {
+export default function ContactList({
+  contacts,
+  filteredContacts,
+  deleteContact,
+}) {
   const displayedContacts = filteredContacts ? filteredContacts : contacts;
 
   return (
     <div className={css["container-contacts"]}>
-      {displayedContacts.map((contact) => (
+      {displayedContacts.map(({ id, name, number }) => (
         <Contact
-          key={contact.id}
-          name={contact.name}
-          id={contact.id}
-          number={contact.number}
+          key={id}
+          name={name}
+          id={id}
+          number={number}
+          deleteContact={deleteContact}
         />
       ))}
     </div>
