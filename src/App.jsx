@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("contact", JSON.stringify(contacts), [contacts]);
-  });
+  }, [contacts]);
 
   const addContact = (contact) => {
     const newContact = {
@@ -47,7 +47,6 @@ function App() {
         <ContactForm onSubmit={addContact} />
         <SearchBox inputValue={inputValue} setInputValue={setInputValue} />
         <ContactList
-          contacts={initialInfo}
           filteredContacts={filteredContacts}
           deleteContact={deleteContact}
         />
